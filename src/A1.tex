@@ -1,0 +1,178 @@
+\documentclass[10pt]{article}
+
+\input{../templates/set.tex}
+
+\title{MATH 240: Discrete Structures - Assignment 1}
+\author{Liam Scalzulli\\
+\href{mailto:liam.scalzulli@mail.mcgill.ca}{liam.scalzulli@mail.mcgill.ca}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsection*{Problem 1}
+
+To do this we can simplify the right-hand side using set identities,
+ultimately showing that it is equivalent to the left-hand side.
+
+\begin{align*}
+  C \setminus B &= (C \setminus B) \setminus (B \setminus A) \\
+    &= (C \cap \overline{B}) \cap \overline{(B \cap \overline{A})}
+      && \text{[Definition } A \setminus B = A \cap \overline{B}] \\
+    &= (C \cap \overline{B}) \cap (\overline{B} \cup A) && \text{[De Morgan's
+      Law: } \overline{A \cap B} = \overline{A} \cup \overline{B}] \\
+    &= C \cap \overline{B} \cap (\overline{B} \cup A) && \text{[Associative Law: }
+      (A \cap B) \cap C = A \cap (B \cap C)]\\
+    &= C \cap \overline{B} && \text{[Absorption Law: } A \cap (A \cup B) = A] \\
+    &= C \setminus B
+\end{align*}
+
+\newpage
+\subsection*{Problem 2}
+
+Recall: A tautology is a statement which contains all true in the last column
+of its truth table.
+
+\subsubsection*{(a)}
+
+\begin{displaymath}
+  \begin{array}{c|c|c|c|c|c|c}
+    p & q & \overline{q} & p \implies q & \overline{p \implies q} & \overline{q}
+    \land (\overline{p \implies q}) & (\overline{q} \land (\overline{p \implies
+    q})) \iff p \\
+    \hline
+    T & T & F & T & F & F & F \\
+    T & F & T & F & T & T & T \\
+    F & T & F & T & F & F & T \\
+    F & F & T & T & F & F & T \\
+  \end{array}
+\end{displaymath}
+
+$$\therefore (\overline{q} \land (\overline{p \implies q})) \iff p \textrm{ is
+  \emph{not} a tautology.}$$
+
+\subsubsection*{(b)}
+
+\begin{displaymath}
+  \begin{array}{c|c|c|c|c|c|c|c}
+    p & q & r & q \implies r & p \implies (q \implies r) & p \implies q & (p
+    \implies q) \implies r & (p \implies (q \implies r)) \iff ((p \implies q)
+    \implies r) \\
+    \hline
+    T & T & T & T & T & T & T & T \\
+    T & T & F & F & F & T & F & T \\
+    T & F & T & T & T & F & T & T \\
+    T & F & F & T & T & F & T & T \\
+    F & T & T & T & T & T & T & T \\
+    F & T & F & F & T & T & F & F \\
+    F & F & T & T & T & T & T & T \\
+    F & F & F & T & T & T & F & F \\
+  \end{array}
+\end{displaymath}
+
+$$\therefore (p \implies (q \implies r)) \iff ((p \implies q) \implies r)
+\textrm{ is \emph{not} tautology.}$$
+
+\newpage
+\subsection*{Problem 3}
+
+To prove logical equivalence we can simplify either the left-hand side or the
+right-hand side using the laws of logic, ultimately showing that one side is
+equivalent to the other.
+
+\subsubsection*{(a)}
+
+\begin{align*}
+  (p \iff q) &\equiv (p \implies q) \land (q \implies p) && \text{[Definition }
+  (p \iff q) \equiv (p \implies q) \land (q \implies p)] \\
+    &\equiv (\overline{p} \lor q) \land (\overline{q} \lor p) && \text{[Definition }
+    (p \implies q) \equiv \overline{p} \lor q]
+\end{align*}
+
+\begin{align*}
+  \overline{p \oplus q} &\equiv \overline{(p \land \overline{q})
+  \lor (\overline{p} \land q}) && \text{[Definition } p \oplus q
+  \equiv (p \land \overline{q}) \lor (\overline{p} \land q)] \\
+    &\equiv \overline{(p \land \overline{q})} \land \overline{(\overline{p}
+      \land q)} && \text{[De Morgan's Law: } \overline{p \lor q}
+      \equiv \overline{p} \land \overline{q}] \\
+    &\equiv (\overline{p} \lor q) \land (q \lor \overline{p})
+      && \text{[De Morgan's Law: } \overline{p \land q}
+      \equiv \overline{p} \lor \overline{q}] \\
+\end{align*}
+
+$$\therefore p \iff q \equiv \overline{p \oplus q}$$
+
+\subsubsection*{(b)}
+
+\begin{align*}
+  \overline{p} &\equiv (\overline{p \lor \overline{q}}) \lor (\overline{p}
+  \land \overline{q}) \\
+    &\equiv (\overline{p} \land q) \lor (\overline{p} \land \overline{q}) &&
+      \text{[De Morgan's Law: } \overline{p \lor q} \equiv \overline{p}
+      \land \overline{q}] \\
+    &\equiv \overline{p} \land (q \lor \overline{q}) && \text{[Distributive Law: }
+      p \land (q \lor r) \equiv (p \land q) \lor (p \land r)] \\
+    &\equiv \overline{p} \land 1 && \text{[Tautology: } p \lor
+      \overline{p} \equiv 1] \\
+    &\equiv \overline{p} && \text{[Identity Law: } p \land 1 \equiv p]
+\end{align*}
+
+\newpage
+\subsection*{Problem 4}
+
+Recall \textbf{NOR}: $(p \downarrow q) \equiv \overline{p} \land \overline{q}
+\equiv \overline{(p \lor q)} \text{ *as seen in class}$
+
+\subsubsection*{(a) OR ($p \lor q$)}
+
+\begin{center}
+  \begin{circuitikz}
+    \draw
+    (0,2) node[nor port] (a) {}
+    (0,0) node[nor port] (b) {}
+    (2,1) node[nor port] (c) {}
+    (a.in 1) -- ++(-0.5, 0) node[left] {$p$}
+    (a.in 2) -- ++(-0.5, 0) node[left] {$q$}
+    (b.in 1) -- ++(-0.5, 0) node[left] {$p$}
+    (b.in 2) -- ++(-0.5, 0) node[left] {$q$}
+    (a.out) -- (c.in 1) node[above,yshift=7.5mm,xshift=-2.5mm] {$\overline{(p \lor q)}$}
+    (b.out) -- (c.in 2) node[below,yshift=-7.5mm,xshift=-2.5mm] {$\overline{(p \lor q)}$}
+    [->] (c.out) -- ++(0.5, 0) node[right] {$\overline{\overline{(p \lor q)} \lor
+    \overline{(p \lor q)}} \equiv (p \lor q) \land (p \lor q) \equiv p \lor q$};
+  \end{circuitikz}
+\end{center}
+
+\subsubsection*{(b) AND ($p \land q$)}
+
+\begin{center}
+  \begin{circuitikz}
+    \draw
+    (0,2) node[nor port] (a) {}
+    (0,0) node[nor port] (b) {}
+    (2,1) node[nor port] (c) {}
+    (a.in 1) -- ++(-0.5, 0) node[left] {$p$}
+    (a.in 2) -- ++(-0.5, 0) node[left] {$p$}
+    (b.in 1) -- ++(-0.5, 0) node[left] {$q$}
+    (b.in 2) -- ++(-0.5, 0) node[left] {$q$}
+    (a.out) -- (c.in 1) node[above,yshift=7.5mm,xshift=-2.5mm] {$\overline{(p \lor p)}$}
+    (b.out) -- (c.in 2) node[below,yshift=-7.5mm,xshift=-2.5mm] {$\overline{(q \lor q)}$}
+    [->] (c.out) -- ++(0.5, 0) node[right] {$\overline{\overline{(p \lor p)} \lor
+    \overline{(q \lor q)}} \equiv (p \lor p) \land (q \lor q) \equiv p \land q$};
+  \end{circuitikz}
+\end{center}
+
+\subsubsection*{(c) NOT ($\overline{p}$)}
+
+\begin{center}
+  \begin{circuitikz}
+    \draw
+    (2,1) node[nor port] (a) {}
+    (a.in 1) -- ++(-0.5, 0) node[left] {$p$}
+    (a.in 2) -- ++(-0.5, 0) node[left] {$p$}
+    [->] (c.out) -- ++(0.5, 0) node[right] {$\overline{p \lor p} \equiv
+    \overline{p} \land \overline{p} \equiv \overline{p}$};
+  \end{circuitikz}
+\end{center}
+
+\end{document}
