@@ -95,8 +95,9 @@
   \end{align*}
 
   \noindent
-  Since all $5^n, \: n \in Z$ are odd and all $2^m, \: m \in Z$ are even, we've
-  reached a contradiction.
+  Since $5$ is odd and all $5^n, \: n \in \N$ are odd by induction and $2$ is even 
+  and all $2^m, \: m \in \N$ are even by induction, an odd number can never equal an even number, 
+  we've reached a contradiction, hence $log_{2}5$ is irrational.
 \end{proof}
 
 \newpage
@@ -105,13 +106,13 @@
 \subsubsection*{(a)}
 
 \begin{proof}
-  Let $P(n) = \frac{1}{1 \times 3} + \frac{1}{3 \times 5} + \frac{1}{5 \times 7} +
-  ... + \frac{1}{(2n - 1)(2n + 1)} = \frac{n}{2n + 1}$.
+  Let $P(n) = \frac{1}{1 \cdot 3} + \frac{1}{3 \cdot 5} + \frac{1}{5 \cdot 7} +
+  ... + \frac{1}{(2n - 1) \cdot (2n + 1)} = \frac{n}{2n + 1}$.
   \spacing
 
   \noindent
   \underline{Base case}: $n = 1$
-  $$ \frac{1}{(1 \times 3)} = \frac{1}{3} $$
+  $$ \frac{1}{(1 \cdot 3)} = \frac{1}{3} $$
   $$ \frac{n}{2n + 1} = \frac{1}{2(1) + 1} = \frac{1}{3} $$
   \spacing
 
@@ -119,8 +120,8 @@
   \underline{Induction step}:
   Assume $P(n)$ holds for some $n \le k$.
 
-  $$ \text{Then } \frac{1}{1 \times 3} + \frac{1}{3 \times 5} +
-  \frac{1}{5 \times 7} + ... + \frac{1}{(2k - 1) \times (2k + 1)} = \frac{k}{2k + 1} $$
+  $$ \text{Then } \frac{1}{1 \cdot 3} + \frac{1}{3 \cdot 5} +
+  \frac{1}{5 \cdot 7} + ... + \frac{1}{(2k - 1) \cdot (2k + 1)} = \frac{k}{2k + 1} $$
 
   \begin{align*}
     \frac{k}{2k + 1} + \frac{1}{(2(k + 1) - 1)(2(k + 1) + 1)} &=
@@ -143,7 +144,7 @@
   \spacing
 
   \noindent
-  \underline{Base case}:
+  \underline{Base case}: $n = 2$
   $$\overline{A_{1} \cup A_{2}} = \overline{A_{1}} \cap \overline{A_{2}}$$
   Which is true by DeMorgan's Law.
   \spacing
@@ -161,7 +162,7 @@
     &= (\overline{A_{1}} \cap \overline{A_{2}} \cap ... \cap \overline{A_{k}})
       \cap \overline{A_{k + 1}} && \text{[Induction Hypothesis]} \\
     &= \overline{A_{1}} \cap \overline{A_{2}} \cap ...
-      \cap \overline{A_{k}} \cap \overline{A_{k + 1}}
+      \cap \overline{A_{k}} \cap \overline{A_{k + 1}} && \text{[Associativity]}
   \end{align*}
 
   \noindent
@@ -182,6 +183,12 @@
   \noindent
   We can then write $ma = b + c$, $m \in \N$, and by Bézout's Identity we have $1 = bu + cv$
   where $b, c \in \N$.
+  \spacing
+
+  \noindent
+  Then:
+  $$b = ma - c$$
+  $$c = ma - b$$
   \spacing
 
   \noindent
