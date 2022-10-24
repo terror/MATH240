@@ -12,8 +12,85 @@
 
 \subsection*{Problem 1}
 
+\begin{proof}
+  Assume $2^n - 1$ is prime. \spacing
+
+  \noindent
+  Let $\sigma(n)$ be a function that computes the sum of all divisors of a given
+  number $n$.
+  \spacing
+
+  \noindent
+  Then $\sigma(2^n - 1) = 2^n$ since the only divisors of $2^n - 1$ are $1$ and $2 ^ n - 1$ as a result
+  of $2^n - 1$ being prime.
+  \spacing
+
+  \noindent
+  Moreover, we have $\sigma(2^{n - 1}) = 2^n - 1$ as the divisors of $2^{n - 1}$ are all even numbers up to
+  and including $2^{n - 1}$.
+  \spacing
+
+  \noindent
+  Putting it all together:
+
+  \begin{align*}
+    \sigma(2^{n - 1}(2^{n - 1}))) &= \sigma(2^{n - 1})\sigma(2^n - 1) \\
+      &= (2^n - 1)(2^n) \\
+      &= 2(2^{n - 1})(2^n - 1)
+  \end{align*}
+
+  \noindent
+  Therefore $2^n-1(2^n - 1)$ is a perfect number.
+\end{proof}
+
 \newpage
 \subsection*{Problem 2}
+
+\underline{Step 1:} Find $148^{-1}$ (mod 421)
+\spacing
+
+\noindent
+Compute the steps of the Euclidean $GCD$ algorithm:
+
+\begin{align*}
+  421 &= 2 \times 148 + 125 \\
+  148 &= 1 \times 125 + 23 \\
+  125 &= 5 \times 23 + 10 \\
+  23 &= 2 \times 10 + 3 \\
+  10 &= 3 \times 3 + 1
+\end{align*}
+
+\spacing
+\noindent
+Roll back the steps to find $s, t \in \Z$ such that $1 = 421s + 148t$
+
+\begin{align*}
+  1 &= 1(10) - 3(3) \\
+    &= 1(10) - 3(23 - 2(10)) \\
+    &= 7(10) - 3(23) \\
+    &= 7(125 - 5(23)) - 3(23) \\
+    &= 7(125) - 38(23) \\
+    &= 7(125) - 38(148 - 1(125)) \\
+    &= 45(125) - 38(148) \\
+    &= 45(421 - 2(148)) - 38(148) \\
+    &= 45(421) - 128(148)
+\end{align*}
+
+\spacing
+\noindent
+So $1 = 45(421) - 128(148)$, we then get $1 = -128(148)$, 
+hence $148^{-1}$ (mod 421) $\equiv -128 \equiv 293$ (mod 421).
+\spacing
+
+\noindent
+\underline{Step 2}: Solve $148x \equiv 12$ (mod 421)
+
+\begin{align*}
+  148x &\equiv 12 \text{ (mod 421)} \\
+     x &\equiv 12 \times 293 \text{ (mod 421)} \\
+       &\equiv 3516 \text{ (mod 421)} \\
+       &\equiv 148 \text{ (mod 421)}
+\end{align*}
 
 \newpage
 \subsection*{Problem 3}
