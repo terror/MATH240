@@ -26,7 +26,7 @@
   \spacing
 
   \noindent
-  Moreover, we have $\sigma(2^{n - 1}) = 2^n - 1$ as the divisors of $2^{n - 1}$ are all even numbers up to
+  Moreover, we have $\sigma(2^{n - 1}) = 2^n - 1$ as the divisors of $2^{n - 1}$ are all powers of $2$ up to
   and including $2^{n - 1}$.
   \spacing
 
@@ -95,6 +95,74 @@ hence $148^{-1}$ (mod 421) $\equiv -128 \equiv 293$ (mod 421).
 \newpage
 \subsection*{Problem 3}
 
+Recall: $a^{p - 1} \equiv 1 \text{ (mod p)}$
+
+\subsubsection*{(a)}
+
+\begin{align*}
+  2409^{1335} \text{ (mod 19)} &= 2409^{(18 \cdot 74) + 3} \text{ (mod 19)} \\
+    &= 2409^3 \text{ (mod 19)} && \text{[$2409 \equiv 15$ (mod 19)]} \\
+    &= 15^3 \text{ (mod 19)} \\
+    &= 3375 \text{ (mod 19)} \\
+    &= 12 \text{ (mod 19)}
+\end{align*}
+
+\subsubsection*{(b)}
+
+\begin{align*}
+  7^{42806} \text{ (mod 349)} &= 7^{(123 \cdot 348) + 2} \text{ (mod 349)} \\
+    &= 7^2 \text{ (mod 349)} \\
+    &= 49 \text{ (mod 349)}
+\end{align*}
+
 \newpage
 \subsection*{Problem 4}
+
+\subsubsection*{(a)}
+
+\begin{align*}
+  \hat{M} &= M^p \text{ mod n} \\
+    &= 4^5 \text{ mod 91} \\
+    &= 1024 \text{ mod 91} \\
+    &= 23
+\end{align*}
+
+\subsubsection*{(b)}
+
+\begin{align*}
+  x &= p^{-1} \text{ mod $(q_{1} - 1)(q_{2} - 1)$} \\
+    &= 5^{-1} \text{ mod 72}
+\end{align*}
+
+\spacing
+\noindent
+Compute the steps of the Euclidean $GCD$ algorithm:
+
+\begin{align*}
+  72 &= 14 \times 5 + 2 \\
+  5 &= 2 \times 2 + 1
+\end{align*}
+
+\spacing
+\noindent
+Roll back the steps to find $s, t \in \Z$ such that $1 = 5s + 72t$
+
+\begin{align*}
+  1 &= 5 - 2(2) \\
+    &= 5 - 2(72 - 14(5)) \\
+    &= 29(5) - 2(72)
+\end{align*}
+
+\noindent
+So we see that $x = 29$, since $p \cdot 29 \equiv 1$ mod $72$.
+
+\subsubsection*{(c)}
+
+\begin{align*}
+  M &= \hat{M}^x \text{ mod n} \\
+    &= \hat{M}^{29} \text{ mod 91} \\
+    &= 23^{29} \text{ mod 91} \\
+    &= 4
+\end{align*}
+
 \end{document}
