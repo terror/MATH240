@@ -22,25 +22,58 @@
 
   \noindent
   Then $\sigma(2^n - 1) = 2^n$ since the only divisors of $2^n - 1$ are $1$ and $2 ^ n - 1$ as a result
-  of $2^n - 1$ being prime.
-  \spacing
+  of $2^n - 1$ being prime:
+
+  $$ 1 + 2^{n} - 1 = 2^{n} $$
 
   \noindent
   Moreover, we have $\sigma(2^{n - 1}) = 2^n - 1$ as the divisors of $2^{n - 1}$ are all powers of $2$ up to
-  and including $2^{n - 1}$.
+  and including $2^{n - 1}$:
+
+  \begin{align*}
+    1 + 2 + 4 + 8 + ... + 2^{n - 1} \\
+    = 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^{n - 1}
+  \end{align*}
+
+  \noindent
+  The above is just a geometric series, whose sum can be computed using the formula 
+  $S_{n} = \frac{1 - r^{n + 1}}{1 - r}$ (source: \href{https://mathworld.wolfram.com/GeometricSeries.html}{https://mathworld.wolfram.com/GeometricSeries.html}) 
+  where $r$ is the common ratio, and $n$ is the number of terms.
+  \spacing
+
+  \noindent
+  In this case, $r = 2$ and $n = n - 1$. This gives us enough information to compute the sum:
+
+  \begin{align*}
+    S_{n} &= \frac{1 - 2^{(n - 1) + 1}}{1 - 2} \\
+      &= \frac{1 - 2^n}{-1} \\
+      &= 2^n - 1
+  \end{align*}
+
+  \spacing
+
+  \noindent
+  Lastly, we must notice that our function $\sigma(n)$ is multiplicative, that is $\sigma(ab) = \sigma(a) \cdot \sigma(b)$, 
+  if $a$ and $b$ are relatively prime. I won't prove this here, but link to a wikipedia article that explains more
+  about the function and its properties: \href{https://en.wikipedia.org/wiki/Divisor_function}{https://en.wikipedia.org/wiki/Divisor\_function}.
+  \spacing
+
+  \noindent
+  For the purposes of this proof, we know that $2^n - 1$ and $2^{n - 1}$ are relatively prime, so our function $\sigma(n)$
+  is multiplicative for the numbers $2^n - 1$ and $2^{n - 1}$.
   \spacing
 
   \noindent
   Putting it all together:
 
   \begin{align*}
-    \sigma(2^{n - 1}(2^{n - 1}))) &= \sigma(2^{n - 1})\sigma(2^n - 1) \\
-      &= (2^n - 1)(2^n) \\
-      &= 2(2^{n - 1})(2^n - 1)
+    \sigma(2^{n - 1}(2^{n} - 1)) &= \sigma(2^{n - 1})\sigma(2^n - 1) && \text{[Multiplicative property]} \\
+      &= (2^n - 1)(2^n) && \text{[Replace with sums]} \\
+      &= 2(2^{n - 1})(2^n - 1) && \text{[Factor out a 2]}
   \end{align*}
 
   \noindent
-  Therefore $2^n-1(2^n - 1)$ is a perfect number.
+  Therefore $2^n-1(2^n - 1)$ is a perfect number as $\frac{\sigma(2^{n - 1}(2^{n} - 1))}{2} = 2^{n - 1}(2^{n} - 1)$.
 \end{proof}
 
 \newpage
@@ -99,15 +132,33 @@ Recall: $a^{p - 1} \equiv 1 \text{ (mod p)}$
 
 \subsubsection*{(a)}
 
+First we try to decompose $1335$ into $(18 \cdot n) + r$.
+\spacing
+
+\intlongdivision{1335}{18}
+\spacing
+
+\noindent
+Therefore $n = 74$ and $r = 3$
+
 \begin{align*}
   2409^{1335} \text{ (mod 19)} &= 2409^{(18 \cdot 74) + 3} \text{ (mod 19)} \\
-    &= 2409^3 \text{ (mod 19)} && \text{[$2409 \equiv 15$ (mod 19)]} \\
+    &= 2409^3 \text{ (mod 19)} && \text{[$2409 \equiv 15$ (mod 19) by LD]} \\
     &= 15^3 \text{ (mod 19)} \\
-    &= 3375 \text{ (mod 19)} \\
+    &= 3375 \text{ (mod 19)} && \text{[Perform LD on (3375, 19)]} \\
     &= 12 \text{ (mod 19)}
 \end{align*}
 
 \subsubsection*{(b)}
+
+First we try to decompose $42806$ into $(348 \cdot n) + r$.
+\spacing
+
+\intlongdivision{42806}{348}
+\spacing
+
+\noindent
+Therefore $n = 123$ and $r = 2$.
 
 \begin{align*}
   7^{42806} \text{ (mod 349)} &= 7^{(123 \cdot 348) + 2} \text{ (mod 349)} \\
@@ -160,9 +211,29 @@ So we see that $x = 29$, since $p \cdot 29 \equiv 1$ mod $72$.
 
 \begin{align*}
   M &= \hat{M}^x \text{ mod n} \\
-    &= \hat{M}^{29} \text{ mod 91} \\
     &= 23^{29} \text{ mod 91} \\
-    &= 4
 \end{align*}
+
+\noindent
+We know that $91 = 7 \cdot 13$, therefore by the Chinese Remainder Theorem a solution to
+$23^{29} \text{ mod 7}$ is also a solution to our original equation:
+
+\begin{align*}
+  M &= \hat{M}^x \text{ mod n} \\
+    &= 23^{29} \text{ mod 91} \\
+    &= 23^{29} \text{ mod 7} \\
+    &= 23^{(7 \cdot 3) + 2} \text{ mod 7} \\
+    &= 23^2 \text{ mod 7} \\
+    &= 529 \text{ mod 7}
+\end{align*}
+
+\noindent
+Perform long division on the integers $529$ and $7$:
+
+\intlongdivision{529}{7}
+\spacing
+
+\noindent
+Therefore our answer is $4$.
 
 \end{document}
