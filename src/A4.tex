@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+
+\input{../templates/set.tex}
+
+\title{MATH 240: Discrete Structures - Assignment 4}
+\author{Liam Scalzulli\\
+\href{mailto:liam.scalzulli@mail.mcgill.ca}{liam.scalzulli@mail.mcgill.ca}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsection*{Problem 1}
+
+\subsubsection*{(a)}
+
+\subsubsection*{(b)}
+
+\newpage
+\subsection*{Problem 2}
+
+The bulk of the work for this problem lay in figuring out
+what our 'pigeonholes' will be. 
+\spacing
+
+\noindent
+Since the we have points of the form $(x, y, z)$, the mid-point, or 'average', of any two 
+points will be of the form $(\frac{x_{1} + x_{2}}{2}, \frac{y_{1} + y_{2}}{2}, \frac{z_{1} + z_{2}}{2})$.
+We want the mid-point to be integral, that is, $\frac{x_{1} + x_{2}}{2} \in \Z$, 
+$\frac{y_{1} + y_{2}}{2} \in \Z$ and $\frac{z_{1} + z_{2}}{2} \in \Z$, so we notice that the numerator
+values must be of the same parity.
+\spacing
+
+\noindent
+Our pigeonholes can thus be the sets of points $(x, y, z) \in \Z \times \Z \times \Z$ according to their parity:
+\vspace*{-15pt}
+
+\begin{align*}
+  H_{EOO} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ even, } y \text{ odd,  } z \text{ odd})\}  \\
+  H_{EEO} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ even, } y \text{ even, } z \text{ odd})\}  \\
+  H_{EEE} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ even, } y \text{ even, } z \text{ even})\} \\
+  H_{OEE} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ odd,  } y \text{ even, } z \text{ even})\} \\
+  H_{EOE} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ even, } y \text{ odd,  } z \text{ even})\} \\
+  H_{OOE} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ odd,  } y \text{ odd,  } z \text{ even})\} \\
+  H_{OOO} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ odd,  } y \text{ odd,  } z \text{ odd})\}  \\
+  H_{OEO} &= \{\text{($x$, $y$, $z$)} \in \Z \times \Z \times \Z : (x \text{ odd,  } y \text{ even, } z \text{ odd})\}
+\end{align*}
+
+\noindent
+Since we take 9 points of the form $(x, y, z) \in \Z \times \Z \times \Z$, note that at least $2$ of them will land
+in the same 'pigeonhole' by the Pigeonhole Principle, and thus whose mid-point will be integral, giving us our answer.
+
+\newpage
+\subsection*{Problem 3}
+
+\subsubsection*{(a)}
+
+We have two base cases:
+
+$$B_{1} = B_{2} = 1$$
+
+\noindent
+For which we can deduce the recurrence as being:
+
+$$B_{n} = B_{n - 1} + B_{n - 2}, \text{ for }n \ge 3$$
+
+\subsubsection*{(b)}
+
+\begin{proof}
+  (By Induction)
+  \spacing
+
+  \noindent
+  \underline{Base case:} $n = 4$
+  \spacing
+
+  \noindent
+  $$B_{4} = B_{3} + B_{2} = 2 + 1 = 3$$
+  which is divisible by 3.
+  \spacing
+
+  \noindent
+  \underline{Inductive step:}
+  \spacing
+
+  \noindent
+  Assume $B_{4k}$ is divisible by 3 for some $k > n \in \N$.
+  \spacing
+
+  \noindent
+  We have $B_{4k} = 3l \text{ for some } l \in Z$.
+
+  \begin{align*}
+    B_{4k} = B_{4(k + 1)} &= B_{4k + 4} \\
+      &= B_{4k + 3} + B_{4k + 4} && \text{[By RR]} \\
+      &= 2B_{4k + 2} + B_{4k + 1} \\
+      &= 2(B_{4k + 1} + B_{4k}) + B_{4k + 1} \\
+      &= 3B_{4k + 1} + 2B_{4k} \\
+      &= 3B_{4k + 1} + 2(3l) && \text{[By IH]} \\
+      &= 3(B_{4k + 1} + 2l)
+  \end{align*}
+  
+  \noindent
+  Which is divisible by 3, therefore proving that if $n$ is divisible by $4$, $B_{n}$ is divisible by 3,
+  by mathematical induction.
+\end{proof}
+
+\newpage
+\subsection*{Problem 4}
+
+\subsubsection*{(a)}
+
+\subsubsection*{(b)}
+
+\end{document}
