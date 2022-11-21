@@ -14,7 +14,55 @@
 
 \subsubsection*{(a)}
 
+\begin{proof}
+  (By Induction)
+  \spacing
+
+  \noindent
+  \underline{Base case:} k = 0
+  \spacing
+
+  \noindent
+  $${n \choose n} = {n + 1 \choose n + 1} = 1$$
+  \spacing
+
+  \noindent
+  \underline{Inductive step:}
+  \spacing
+
+  \noindent
+  Assume $\sum_{i = 0}^{k}{n + i \choose n} = {n + k + 1 \choose n + 1}$ for some $k$, then:
+
+  \begin{align*}
+   \sum_{i = 0}^{k + 1}{n + i \choose n} &= \sum_{i = 0}^{k}{n + i \choose n} + {n + k + 1 \choose n} \\
+     &= {n + k + 1 \choose n + 1} + {n + k + 1 \choose n} \\
+     &= {n + k + 2 \choose n + 1} \\
+     &= {n + (k + 1) + 1 \choose n + 1}
+  \end{align*}
+
+  \noindent
+  which is what we wanted to show.
+\end{proof}
+
 \subsubsection*{(b)}
+
+\begin{proof}
+  (By Combinatorial Proof)
+  \spacing
+
+  \noindent
+  Choose any integers $n$, $k$ and let $S$ be a set such that $|S| = n + k + 1$.
+  \spacing
+
+  \noindent
+  The RHS counts the number of $n + 1$ element subsets of S.
+  \spacing
+
+  \noindent
+  The LHS counts the same thing in a different way. Remove $k + 1$ elements
+  from $S$, then count the number of $n$ element subsets of $S$, repeat this
+  until we've added each removed element back into $S$. We arrive at the same conclusion.
+\end{proof}
 
 \newpage
 \subsection*{Problem 2}
@@ -55,9 +103,13 @@ in the same 'pigeonhole' by the Pigeonhole Principle, and thus whose mid-point w
 
 \subsubsection*{(a)}
 
-We have two base cases:
+We have three base cases:
 
-$$B_{1} = B_{2} = 1$$
+\begin{align*}
+  B_{1} &= 1 \\
+  B_{2} &= 1 \\
+  B_{3} &= 2
+\end{align*}
 
 \noindent
 For which we can deduce the recurrence as being:
